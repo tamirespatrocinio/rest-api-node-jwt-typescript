@@ -1,13 +1,13 @@
-import { model, Model } from 'mongoose';
-import UserSchema, { IUser } from './schema';
+import { model, Model } from "mongoose";
+import UserSchema, { IUser } from "./schema";
 
-UserSchema.pre<IUser>('save', function (next) {
-    if (!this.createdAt) {
-        this.createdAt = new Date();
-    }
-    next();
+UserSchema.pre<IUser>("save", function (next) {
+  if (!this.createdAt) {
+    this.createdAt = new Date();
+  }
+  next();
 });
 
-const User: Model<IUser> = model('User', UserSchema);
+const User: Model<IUser> = model("User", UserSchema);
 
 export default User;
