@@ -1,23 +1,22 @@
 import { Document, Schema } from "mongoose";
 
 export interface IUser extends Document {
-    apelido: string;
     firstName: string;
     lastName: string;
     email: string;
     password: string;
+
+    access?: {
+        admin?: boolean;
+        blocked?: boolean;
+    };
+
 
     createdAt: Date;
 }
 
 //Cria a tabela
 const UserSchema: Schema = new Schema({
-    apelido: {
-        type: Schema.Types.ObjectId,
-        ref: "Products",
-        required: [true, "Apelido is required"],
-        index: true,
-    },
     firstName: {
         type: String,
         required: true,
@@ -40,6 +39,13 @@ const UserSchema: Schema = new Schema({
         type: String,
         default: "",
     },
+
+    access: {
+        admin: { type: Boolean, default: false },
+        blocked: { type: Boolean, default: false },
+    },
+
+
 
     createdAt: { type: Date },
 });

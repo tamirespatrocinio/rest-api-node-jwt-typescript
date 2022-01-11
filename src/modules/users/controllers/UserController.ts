@@ -14,9 +14,10 @@ export default class UserController {
 
     const createUser = new CreateUserService();
 
-    const users = await createUser.execute(data);
+    const user = await createUser.execute(data);
 
-    return res.json(users);
+    return res.json(user);
+    //return res.json([{ id: user.id }, { firstName: user.firstName }, { lastName: user.lastName }, { email: user.email }]);
   }
 
   /*   public async create(req: Request, res: Response): Promise<Response> {
@@ -36,9 +37,9 @@ export default class UserController {
 
     const list = new ListUsers();
 
-    const allUsers = await list.execute();
+    const user = await list.execute();
 
-    return res.json(allUsers);
+    return res.json(user);
   }
 
   public async show(req: Request, res: Response): Promise<Response> {

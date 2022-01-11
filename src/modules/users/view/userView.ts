@@ -5,6 +5,7 @@ interface IUserView {
     firstName: string;
     lastName?: string;
     email: string;
+    access: unknown;
 }
 
 const usersView = {
@@ -13,7 +14,8 @@ const usersView = {
             _id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email
+            email: user.email,
+            access: user.access,
         };
     },
 
