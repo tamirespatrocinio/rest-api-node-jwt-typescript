@@ -44,10 +44,6 @@ export default class AuthenticateUserService {
             throw new AppError("Email/password incorrect", 401);
         }
 
-        if (user.access?.blocked) {
-            throw new AppError("User not allowed to access", 401);
-        }
-
         const { expiresIn, secret } = auth.jwt;
 
         const token = sign({}, secret, {

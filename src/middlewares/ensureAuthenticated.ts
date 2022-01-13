@@ -8,7 +8,7 @@ interface TokenPayload {
     sub: string;
 }
 
-export default function ensureAuthenticated(request: Request, response: Response, next: NextFunction): void {
+export default function ensureAuthenticated(request: Request, _: Response, next: NextFunction): void {
 
     const authHeader = request.headers.authorization;
 
@@ -16,11 +16,10 @@ export default function ensureAuthenticated(request: Request, response: Response
         throw new Error('JWT token is missing')
     }
 
-    const [, token] = authHeader.split('');
+    const [, token] = authHeader.split(' ');
 
     try {
         const decoded = verify(token, auth.jwt.secret);
-
         const { sub } = decoded as TokenPayload;
 
         request.user = {

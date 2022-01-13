@@ -7,10 +7,9 @@ export default class ListProductService {
         private productModel: Model<IProducts> = Products
     ) { }
 
-    public async execute(): Promise<IProducts> {
-        const products = await this.productModel.find();
+    public async execute(): Promise<IProducts[]> {
+        const products = await this.productModel.find().populate('user');
 
-        //@ts-ignore
         return products;
     }
 }

@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-//import model from "../model";
 import CreateUserService from "../services/CreateUserService";
-import DeleteUser from "../services/DeleteUser";
-import ListUser from "../services/ListUser";
-import ListUsers from "../services/ListUsers";
-import UpdateUser from "../services/UpdateUser";
+import DeleteUser from "../services/DeleteUserService";
+import ListUser from "../services/ListUserIdService";
+import ListUsers from "../services/ListUsersService";
+import UpdateUser from "../services/UpdateUserService";
 import usersView from "../view/userView";
 
 export default class UserController {
@@ -16,7 +15,7 @@ export default class UserController {
 
     const user = await createUser.execute(data);
 
-    return res.json(user);
+    return res.json(usersView.render(user));
     //return res.json([{ id: user.id }, { firstName: user.firstName }, { lastName: user.lastName }, { email: user.email }]);
   }
 
@@ -39,7 +38,7 @@ export default class UserController {
 
     const user = await list.execute();
 
-    return res.json(user);
+    return res.json(usersView.render(user));
   }
 
   public async show(req: Request, res: Response): Promise<Response> {
@@ -59,7 +58,6 @@ export default class UserController {
     const update = new UpdateUser();
 
     await update.execute(data, id);
-    //console.log(data);
 
     return res.json({ message: "Updated with success" });
   }

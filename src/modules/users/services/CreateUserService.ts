@@ -21,11 +21,11 @@ export default class CreateUser {
     const checkUserExists = await this.userModel.findOne({ email });
 
     if (checkUserExists) {
-      throw new AppError("User email already exists", 401);
+      throw new AppError("User email already exists");
     }
 
     if (password !== confirmPassword) {
-      throw new AppError("Password does not match", 401);
+      throw new AppError("Password does not match");
     }
 
     let hashedPassword = "";

@@ -10,11 +10,15 @@ export default class CreateProducts {
 
     public async execute(data: IProducts, user: string): Promise<IProducts> {
 
+        const { description, value } = data;
+
         const product = await this.productsModel.create({
-            ...data,
+            description,
+            value,
             user
         });
 
+        console.log(product)
         return product;
     }
 }

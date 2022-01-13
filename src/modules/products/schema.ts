@@ -1,7 +1,7 @@
 import { Document, Schema } from 'mongoose';
 
 export interface IProducts extends Document {
-    user_id: string;
+    user: string;
     description: string;
     value: number;
 
@@ -22,12 +22,12 @@ const ProductsSchema: Schema = new Schema({
         default: ''
     },
 
-    user_id: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        index: true,
-        required: true,
+        ref: "User",
+        required: [true, "User is required"]
     },
+
 
     createdAt: { type: Date }
 

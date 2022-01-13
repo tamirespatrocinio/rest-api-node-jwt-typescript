@@ -6,12 +6,6 @@ export interface IUser extends Document {
     email: string;
     password: string;
 
-    access?: {
-        admin?: boolean;
-        blocked?: boolean;
-    };
-
-
     createdAt: Date;
 }
 
@@ -39,13 +33,6 @@ const UserSchema: Schema = new Schema({
         type: String,
         default: "",
     },
-
-    access: {
-        admin: { type: Boolean, default: false },
-        blocked: { type: Boolean, default: false },
-    },
-
-
 
     createdAt: { type: Date },
 });
