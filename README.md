@@ -8,7 +8,7 @@ This is a Node.js back end application written in TypeScript, which features RES
 
 <h2> Deployment </h2>
 
-local host.
+localhost.
 
 <br>
 <div align="center">
