@@ -28,7 +28,7 @@ export default class AuthenticateUserService {
 
         if (!user || !user.password) {
             throw new AppError(
-                "E-mail/password incorrect ou user does not exist", 401
+                "E-mail/password incorrect or user does not exist", 401
             );
         }
 
